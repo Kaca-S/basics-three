@@ -1,3 +1,6 @@
+
+                              //ASSIGNMENT 6
+                              
 /*The Dream - Harry Bernstein
 Serendipity - Ashok Ferrey
 Kafka on the shore - Haruki Murakami
@@ -6,10 +9,15 @@ Man Without Women - Haruki Murakami
 The War of the End of the World - Mario Vargas Llosa */
 
 
-                              //ASSIGNMENT 6
-
-const library = [];
-
+const library = [
+    {title: "The Dream", author: "Harry Bernstein", isRead: true},
+    {title: "Serendipity", author: "Ashok Ferrey", isRead: false},
+    {title: "Kafka on the shore", author: "Haruki MUrakami", isRead: true},
+    {title: "Dirty Havana Trilogy", author: "Pedro Juan Gutierrez", isRead: true},
+    {title: "Man Without Women", author: "Haruki Murakami", isRead: false},
+    {title: "The War of the End of the World", author: "Mario Vargas Llosa", isRead: true},
+];
+console.log(library);
 function addBook() {
     const title = prompt("Enter the book title:");
     const author = prompt("Enter the author's name:");
@@ -48,7 +56,7 @@ function markAsRead(title) {
 }
 // function unreadBooks - Bonus challenge (optional): Allow the user to list only unread books
 
-/*function filterUnreadBooks() {
+function listUnreadBooks() {
     const unreadBooks = library.filter(book => !book.isRead); // Filters books where isRead is false
     if (unreadBooks.length === 0) {
         console.log("All books have been read!");
@@ -58,7 +66,7 @@ function markAsRead(title) {
             console.log(`"${book.title}" by ${book.author}`);
         });
     }
-}*/
+}
 
 
 // 4. List Unread Books - dodati u listu
@@ -71,7 +79,8 @@ while (running) {
         1. Add Book
         2. List Books
         3. Mark Book as Read
-        4. Exit
+        4. List Unread Books
+        5. Exit
         Enter your choice:`);
 
     switch (choice) {
@@ -86,6 +95,9 @@ while (running) {
             markAsRead(title);
             break;
         case "4":
+            listUnreadBooks(); 
+            break;
+        case "5":
             running = false;
             alert("Goodbye!");
             break;
