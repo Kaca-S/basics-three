@@ -24,3 +24,72 @@ function addBook() {
     library.push(newBook);
     console.log(`New book ${title} by ${author} is added to your library.`);
 }
+
+function listBooks() {
+    if (library.length === 0) {
+        console.log("There are no book in the library.");
+    } else {
+        console.log("There are books in the library.");
+        library.forEach(book => {
+            const readStatus = book.isRead ? "Read" : "Not Read";
+            console.log(`${book.title} by ${book.author} - ${readStatus}`);
+        });
+    }
+}
+
+function markAsRead(title) {
+    const book = library.find(book => book.title === title);
+    if (book) {
+        book.isRead = true;
+        alert(`This "${title}" as read.`);
+    } else {
+        alert(`"The book ${title}" is not found in your library.`);
+    }
+}
+// function unreadBooks - Bonus challenge (optional): Allow the user to list only unread books
+
+/*function filterUnreadBooks() {
+    const unreadBooks = library.filter(book => !book.isRead); // Filters books where isRead is false
+    if (unreadBooks.length === 0) {
+        console.log("All books have been read!");
+    } else {
+        console.log("Unread books in your library:");
+        unreadBooks.forEach(book => {
+            console.log(`"${book.title}" by ${book.author}`);
+        });
+    }
+}*/
+
+
+// 4. List Unread Books - dodati u listu
+
+let running = true;
+
+while (running) {
+    const choice = prompt(`
+        Book Tracker
+        1. Add Book
+        2. List Books
+        3. Mark Book as Read
+        4. Exit
+        Enter your choice:`);
+
+    switch (choice) {
+        case "1":
+            addBook();
+            break;
+        case "2":
+            listBooks();
+            break;
+        case "3":
+            const title = prompt("Enter the title of the book to mark as read:");
+            markAsRead(title);
+            break;
+        case "4":
+            running = false;
+            alert("Goodbye!");
+            break;
+        default:
+            alert("Invalid choice.");
+    }
+}
